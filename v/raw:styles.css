@@ -1,1 +1,22 @@
+           body {
+               font-family:serif;
+           } 
+            button {
+               font-family:serif;
+           } 
+           .newnote {
+               background-color:lightgrey;
+               padding:10px;
+               border-radius:18px;
+           }
+           
+           .name {
+               width:95%;
+           }
+           
+           .content {
+               width: 95%;
+               height:150px;
+              display:block;
+           }
 
