@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+<head>
+    <title>MyNotes</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #1e1e2f, #2b2b45);
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        p {
+            text-align: center;
+            color: #b0b0d0;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 8px 5px;
+            border: none;
+            border-radius: 8px;
+            background: #4a6cff;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #6f8cff;
+            transform: scale(1.05);
+        }
+
+        .danger {
+            background: #ff4a4a;
+            border: 2px solid #a00000;
+        }
+
+        .danger:hover {
+            background: #ff6b6b;
+        }
+
+        .newnote {
+            background: #2f2f4a;
+            padding: 20px;
+            border-radius: 12px;
+            max-width: 500px;
+            margin: 20px auto;
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border: none;
+            outline: none;
+            background: #1e1e2f;
+            color: white;
+        }
+
+        #notes {
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        #notes h1 {
+            font-size: 20px;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        #notes p {
+            text-align: left;
+            margin-bottom: 10px;
+        }
+
+        hr {
+            border: none;
+            height: 1px;
+            background: #555;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>My Notes</h1>
+    <p>v1.0.0</p>
+
+    <div style="text-align:center;">
+        <button onclick="restore()">Restore Notes</button>
+        <button onclick="deletenotes()" class="danger">Delete all Notes</button>
+    </div>
+
+    <hr />
+
+    <div class="newnote"> 
+        <p>Note Name</p>
+        <input id="name">
+
+        <p>Note contents</p>
+        <textarea id="content"></textarea>
+
+        <button onclick="addnote()">Add Note</button>
+    </div>
+
+    <hr />
+    <div id="notes"></div>
+
+    <script>
+        function addnote() {
+            let name = document.getElementById('name').value;
+            let content = document.getElementById('content').value;
+
+            let add = "<h1>" + name + "</h1><p>" + content + "</p><hr />";
+            document.getElementById("notes").innerHTML += add;
+
+            window.localStorage.setItem("n", document.getElementById("notes").innerHTML);
+        }
+
+        function restore() {
+            let oldnotes = window.localStorage.getItem("n");
+            document.getElementById("notes").innerHTML = oldnotes || "";
+        }
+
+        function deletenotes() {
+            let sure = window.prompt(
+                "Are you sure? This will delete all of your notes.",
+                "Type 'y' to confirm"
+            );
+
+            if (sure === "y") {
+                document.getElementById("notes").innerHTML = "";
+                window.localStorage.removeItem("n");
+                alert("All notes have been deleted.");
+            } else {
+                alert("Deletion cancelled.");
+            }
+        }
+    </script>
+</body>
+</html>
