@@ -1,13 +1,19 @@
 {
   "name": "Cooki-Notes",
   "short_name": "CookiNotes",
-  "start_url": ".",
+  "start_url": "/MyNotes/v/styled/",
+  "scope": "/MyNotes/v/styled/",
   "display": "standalone",
   "background_color": "#d9e8ff",
   "theme_color": "#5c75d0",
   "icons": [
     {
-      "src": "https://yoylecookie.github.io/MyNotes/logo.png",
+      "src": "/MyNotes/v/styled/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/MyNotes/v/styled/logo.png",
       "sizes": "512x512",
       "type": "image/png"
     }
