@@ -138,7 +138,7 @@
             let content = document.getElementById('content').value;
 
             let add = "<h1>" + name + "</h1><p>" + content + "</p><hr />";
-            document.getElementById("notes").innerHTML += add;
+            document.getElementById("notes").innerText += add;
 
             window.localStorage.setItem("n", document.getElementById("notes").innerHTML);
         }
